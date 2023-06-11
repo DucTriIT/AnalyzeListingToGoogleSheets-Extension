@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Listing To Google Sheet Extension",
+  "description": "This extension will extract data from a listing and put them in a Google Sheet",
+  "version": "1.0",
+  "action": {
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "tabs",
+    "unlimitedStorage",
+    "identity"
+  ],
+  "oauth2": {
+    "client_id": "61791864774-p6turaee6m4055544q7t73r4pq996cgf.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/spreadsheets"],
+    "use_current_page": false,
+    "prompt": "consent"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "jquery-2.2.4.min.js",
+        "content.js",
+        "bootstrap-tokenfield.min.js"
+      ],
+      "css": [
+        "css/bootstrap-tokenfield.min.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "inputModal.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "incognito": "spanning",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://apis.google.com https://api.stripe.com;"
+  }
+}
