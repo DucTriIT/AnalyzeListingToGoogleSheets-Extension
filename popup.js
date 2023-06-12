@@ -1,14 +1,16 @@
+var listing = {};
+
 function SendToContent(tab, action, message, callback){
   var tabid = tab.id;
   //document.getElementById('contentMsg').innerHTML = 'Sending to content for : ' + action;
   console.log('Sending to content for : ' + action);
   chrome.tabs.sendMessage(tab.id, {"action": action, "message" : message}, function(response){
     if(!(response.error)){
-      console.log('receiving response for action [' + action + '] : ' + response.value);
-
+      console.log('receiving response for action [' + action + '] : ' + response.listing);
+      listing = response.listing;
       //document.getElementById('contentMsg').innerHTML = 'Content results : ' + response.value;
       if(callback){
-        callback(response.value);
+        callback(response.listing);
       }
     } else {
       document.getElementById('contentMsg').innerHTML = 'Error for action [' + action + ']';
@@ -35,14 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
         "action" : "extractPropertyInfo"
       }, function(response){
         if(!response.error){
-          console.log('receiving response for action [extractPropertyInfo] : ' + response.value);
+          listing = response.listing;
+          console.log('receiving response for action [extractPropertyInfo] : ' + response.listing);
 
-          document.getElementById('contentMsg').innerHTML = 'Info extracted result : ' + response.value;
-
-          if(response.value == "OK"){
-            document.getElementById('contentMsg').innerHTML = 'Extraction successful';
-            console.log('Extraction successful');
-          }
+          document.getElementById('contentMsg').innerHTML = 'Info extracted result : ' + response.listing;
 
         } else {
           document.getElementById('contentMsg').innerHTML = 'Error for action [extractPropertyInfo]';
@@ -56,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var extractDataButton = document.getElementById('signIn');
   extractDataButton.addEventListener('click', function() {
-    chrome.runtime.sendMessage({ action: 'createSpreadsheet' });
+    chrome.runtime.sendMessage({ action: 'createSpreadsheet',data: listing});
     //     // Get reference to background page.
     // const bgPage = chrome.extension.getBackgroundPage();
     // // Sign in with popup, typically attached to a button click.

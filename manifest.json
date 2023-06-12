@@ -14,15 +14,18 @@
   "permissions": [
     "activeTab",
     "downloads",
+    "storage",
     "tabs",
     "unlimitedStorage",
     "identity"
   ],
   "oauth2": {
-    "client_id": "61791864774-p6turaee6m4055544q7t73r4pq996cgf.apps.googleusercontent.com",
-    "scopes": ["https://www.googleapis.com/auth/spreadsheets"],
-    "use_current_page": false,
-    "prompt": "consent"
+    "api_key": "AIzaSyDFssYFZEbF2X8h4nzFpWbnEujzyElcSjY",
+    "client_id": "634535868820-iem0oienhclftb9v3ct4esgoihlerb0o.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/drive"
+    ]
   },
   "background": {
     "service_worker": "service-worker.js"
@@ -57,6 +60,6 @@
   ],
   "incognito": "spanning",
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://apis.google.com https://api.stripe.com;"
+    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://apis.google.com/js/api.js;"
   }
 }

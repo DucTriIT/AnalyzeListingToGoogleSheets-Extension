@@ -5,8 +5,12 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse){
     if(request.action === "extractPropertyInfo"){
       console.log('extractPropertyInfo');
-
-      let listing = extractPropertyInfo();
+      let returnValue = {
+        error: false,
+        listing: any
+      };
+      returnValue.listing = extractPropertyInfo();
+      sendResponse(listing);
       // createGoogleSheet(listing, function(response){
       //   sendResponse({"value": response});
       // });
@@ -126,7 +130,7 @@ function extractPropertyInfo() {
 
       depensesAnnuelsHorsExpl[term] = value;
     }
-    listing["depenses-annuels-hors-exploitation"] = depensesAnnuelsHorsExpl;
+    listing["depensesAnnuelsHorsExploitation"] = depensesAnnuelsHorsExpl;
   }
 
   //----------- Getting data from sommaire-financier -------------
