@@ -1,4 +1,10 @@
-var listing = {};
+var listing = {
+  adresse : "",
+  region: "",
+  listingId: "",
+  prix: null,
+  infoGenerale: {}
+};
 
 function SendToContent(tab, action, message, callback){
   var tabid = tab.id;
@@ -54,6 +60,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var extractDataButton = document.getElementById('signIn');
   extractDataButton.addEventListener('click', function() {
+    listing = {
+      adresse :"test",
+      region:"test",
+      listingId:"test 1",
+      prix: 100,
+      infoGenerale:{"term":"test term"}
+    }
     chrome.runtime.sendMessage({ action: 'createSpreadsheet',data: listing});
     //     // Get reference to background page.
     // const bgPage = chrome.extension.getBackgroundPage();
