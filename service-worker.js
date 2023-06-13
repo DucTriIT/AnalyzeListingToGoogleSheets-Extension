@@ -51,6 +51,7 @@ async function createSpreadsheet(extractionData) {
     const url = new URL(`https://www.googleapis.com/drive/v3/files/${SPREADSHEET_TEMPLATE_ID}/copy`);
     const spreadsheetData = {
       name: extractionData.adresse,
+      parents: ["YOUR_FOLDER_ID"]
     };
     url.searchParams.set('key', apiKey);
     const response = await fetch(url, {
