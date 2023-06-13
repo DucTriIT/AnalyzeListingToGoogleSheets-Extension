@@ -20,8 +20,8 @@
     "identity"
   ],
   "oauth2": {
-    "api_key": "AIzaSyDFssYFZEbF2X8h4nzFpWbnEujzyElcSjY",
-    "client_id": "634535868820-iem0oienhclftb9v3ct4esgoihlerb0o.apps.googleusercontent.com",
+    "api_key": "YOUR_API_KEY",
+    "client_id": "YOUR_CLIENT_ID",
     "scopes": [
       "https://www.googleapis.com/auth/spreadsheets",
       "https://www.googleapis.com/auth/drive"
